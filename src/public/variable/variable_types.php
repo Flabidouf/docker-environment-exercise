@@ -57,6 +57,7 @@
 
         <!-- Create a new variable in the $me array -->
         <?php $me["hobbies"] = ["Music", "Guitar", "Reading"] ?>
+        <!-- Create a new variable in the $soulmate array -->
         <?php $soulmate["hobbies"] = ["Music","Drawing","Reading"] ?> 
 
         <?php $marraine["hobbies"] = ["Giving to people", "Loving", "Being anxious"]?>
@@ -110,13 +111,153 @@
             $web_development["frontend"][] = "Javascript";
             // Change a variable in an array to a new value.
             $web_development["frontend"] [0] = "html";
-            // Delete a variable from an array.
+            // Delete the value of a variable from an array.
             array_splice($web_development["backend"],1);
 
             echo '<pre>';
             print_r($web_development);
             echo '</pre>';
+            
         ?>
+
+        <?php 
+            // foreach loop example.
+            $names= array('John', 'jeanne', 'Joan', 'emile');
+            var_dump($names);
+
+            foreach ($names as $key => $value){
+                $names[$key] = ucfirst($value);
+            }
+            var_dump($names);  
+        ?>
+
+        <?php
+            $pronouns = array ('I', 'You', 'He/She','We', 'You', 'They');
+                // Pour chaque élément de l'array. Pour chaque pronoun de pronouns.
+            foreach ($pronouns as $pronoun){
+                // if loop. Pour chaque pronoun qui a pour valur 'He/She', $verb = 'codes', sinon $verb = 'code'
+                $verb = ($pronoun == 'He/She') ? 'codes' : 'code';
+                
+                echo "$pronoun $verb<br>";
+            }
+        ?>
+        <?php
+            for ($amount_of_lines = 1; $amount_of_lines <= 100; $amount_of_lines ++)
+            {
+                echo $amount_of_lines . '. : I shall not watch flies fly when I\'m learning PHP.<br />';
+            }
+             
+        ?>
+
+        <?php
+            $amount_of_lines = 1;
+
+            while ($amount_of_lines <= 100)
+            {
+                echo $amount_of_lines . ". : I shall not watch flies fly when I'm learning PHP.<br />";
+                // shorthand writing for 
+                // $amount_of_lines = $amount_of_lines +1;
+                $amount_of_lines ++; 
+
+            }
+        ?>
+
+        <?php
+            // Write a script that prints the numbers from 1 to 120 using while.
+            $numbers = 1;
+
+            while ($numbers <= 120) {
+                echo $numbers . '<br>'; 
+                $numbers ++ ;
+            }
+         ?>
+
+        <?php
+            // Write a script that prints the numbers from 1 to 120 using for.
+            for ($newnumbers = 1; $newnumbers <= 120; $newnumbers ++) {
+                echo $newnumbers . '<br>';
+            }
+        ?>
+
+        <?php
+        // Create an array containing the firstname of everyone in your startup. Display each firstname using a loop.
+            $startups = ['Eve', 'Guillaume', 'Bastien', 'Ziad'];
+
+            foreach ($startups as $startup) {
+                echo "$startup<br>";
+            }
+        ?>
+        <!-- Example of html select box -->
+            <label for='country'> Select a country : </label>
+            <select name='country' id='country'>
+                    <?php
+                        $countries = ['BE'=>'Belgique','FR'=>'France','NP'=>'Népal','JM'=>'Jamaïque','UY'=>'Uruguay','BB'=>'Barbieland','TES'=>'Tamriel','DE'=>'Allemagne','CN'=>'Chine','VN'=>'Vietnam']; 
+
+                        foreach ($countries as $isoCode => $countryname) {
+                           echo "<option value= \"$isoCode\">$countryname </option>";
+                        }
+                    ?>
+            </select>
+        
+            <?php
+            // Break a string into an array of single elements with explode(). Then shuffle its letters with str_shuffle().
+                 $str='According to a researcher (sic) at Cambridge University, it doesn\'t matter in what order the letters in a word are, the only important thing is that the first and last letter be at the right place. The rest can be a total mess and you can still read it without problem. This is because the human mind does not read every letter by itself but the word as a whole';
+                 $str = explode(" ",$str);
+                 foreach($str as $word){
+                    echo str_shuffle($word). " ";
+                 }
+            ?>
+            <?php
+            // Use a function that capitalizes the first letter of the provided argument. Example: "émile"should return "Émile".
+                function capitalize($inputString){
+                   return ucfirst($inputString);
+                }
+                $prénom = "emile";
+                $capitalized = capitalize($prénom);
+                echo $capitalized
+            ?>
+
+            <?php
+            // display the date, time, minutes and seconds, using the same function, by playing with the arguments.
+                echo date('d-m-Y h:i:s') ; 
+            ?>
+
+            <?php
+            // Crée a "Sum" function that takes 2 numbers and returns their sum.
+                $numberstring=[15,27];
+                array_sum($numberstring);
+                if (is_numeric($numberstring)){
+                    echo "This is a numeric";
+                } else {
+                    echo "Error: argument is not a number";
+                }
+            ?>
+
+            <?php
+            // Create a function that takes as argument a string of characters and returns an acronym made of the initials of each word. Example: "In code we trust!" should return: ICWT).
+                function acronym($inputString){
+                    $words = explode(' ', $inputString); // Transforme l'input en array de mots.
+
+                    foreach($words as $word){
+                        // strtoupper transforme la string en uppercase. substr return une partie de la string -> substr($string, start, lenght)
+                        $acronym .= strtoupper(substr($word, 0, 1)); // $acronym .= veut dire $acronym . strtoupper(substr($word, 0, 1) 
+                    }
+                    return $acronym;
+                }
+                $input = "Hello, how are you ?";
+                $acronym = acronym($input);
+                echo $acronym;
+            ?>
+
+            <?php
+            function replaceletters($input){
+                $replacedletters = str_replace(['a','e'], 'æ', $inputString);
+                return $replacedletters;
+            }
+                 $letterreplace = ["caecotrophie", "chaenichthys","microsphaera", "sphaerotheca"];
+                 $output = replaceletters($letterreplace);
+                 echo $output;
+            ?>
     </body>
 </html>
 
