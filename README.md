@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # PHP_Docker Repository Template
 
 ## What is this ?
